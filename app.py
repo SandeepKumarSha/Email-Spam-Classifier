@@ -3,7 +3,7 @@ import pickle
 import nltk
 import string
 
-from nltk.corpus import stopwords
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from nltk.stem.porter import PorterStemmer
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def transform_text(text):
     y.clear()
 
     for i in text:
-        if i not in stopwords.words('english') and i not in string.punctuation:
+        if i not in ENGLISH_STOP_WORDS and i not in string.punctuation:
             y.append(i)
 
     text = y[:]
