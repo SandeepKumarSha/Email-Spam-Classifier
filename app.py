@@ -21,7 +21,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text)
+    text = text.split()
 
     y = []
 
