@@ -4,7 +4,7 @@ An NLP-powered web application that classifies emails or messages as **Spam** or
 
 ## 🏠 Home Page
 
-![Home Page](images/homepage.png)
+![Home Page](static/home_page.png)
 
 ## 🌐 Live Demo
 
@@ -12,12 +12,14 @@ An NLP-powered web application that classifies emails or messages as **Spam** or
 
 ## 🚀 Features
 
-* Classifies messages as **Spam** or **Not Spam**
-* Text preprocessing using NLP techniques
-* Feature extraction using **TF-IDF Vectorization**
-* Real-time prediction through a Flask web interface
-* Modern and responsive user interface
-* Example messages for quick testing
+✅ Classifies messages as Spam or Not Spam
+✅ Performs advanced text preprocessing and cleaning
+✅ Uses TF-IDF Vectorization for feature extraction
+✅ Employs Multinomial Naive Bayes for classification
+✅ Interactive and responsive user interface
+✅ Real-time message analysis
+✅ Displays model evaluation metrics
+✅ Deployed as a web application using Flask
 
 ---
 
@@ -47,23 +49,38 @@ An NLP-powered web application that classifies emails or messages as **Spam** or
 ```bash
 Email-Spam-Classifier/
 │
-├── app.py
-├── model.pkl
-├── vectorizer.pkl
-├── requirements.txt
-├── vercel.json
+├── static/
+│   ├── home_page.png
+│   ├── confusion_matrix.png
+│   ├── evaluation_score.png
+│   └── style.css
 │
 ├── templates/
 │   └── index.html
 │
-├── static/
-│   └── style.css
-│
-├── images/
-│   └── homepage.png
-│
+├── app.py
+├── model.pkl
+├── vectorizer.pkl
+├── requirements.txt
+├── .gitignore
 └── README.md
 ```
+---
+
+## 📊 Model Performance
+
+### Confusion Matrix
+
+![Confusion Matrix](static/images/confusion_matrix.png)
+
+### Evaluation Metrics
+
+![Evaluation Scores](static/images/evaluation_score.png)
+
+| Metric    | Score      |
+| --------- | ---------- |
+| Accuracy  | **97.09%** |
+| Precision | **100%**   |
 
 ---
 
