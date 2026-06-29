@@ -30,6 +30,37 @@
                 verify their legitimacy.</p>
         </header>
 
+        <!-- Classifier Form -->
+        <form method="POST" class="classifier-form">
+            <div class="input-group">
+                <textarea name="message" class="text-area"
+                    placeholder="Paste the email content or message text here to analyze..."
+                    required>{{ request.form.get('message', '') }}</textarea>
+            </div>
+
+            <!-- Interactive Example Messages -->
+            <div class="examples-container">
+                <span class="examples-label">
+                    <i class="fa-regular fa-lightbulb"></i> Try:
+                </span>
+                <div class="example-pills">
+                    <button type="button" class="example-pill" onclick="fillExample('Congratulations! You won a free cash prize of ₹50,000. Call to claim now!')">
+                        <span class="pill-tag spam">Spam</span>
+                        <span class="pill-text">Congratulations! You won a free cash prize of ₹50,000. Call to claim...</span>
+                    </button>
+                    <button type="button" class="example-pill" onclick="fillExample('Hey, are we meeting tomorrow?')">
+                        <span class="pill-tag ham">Ham</span>
+                        <span class="pill-text">Hey, are we meeting tomorrow?</span>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>Scan Message</span>
+                <i class="fa-solid fa-circle-arrow-right"></i>
+            </button>
+        </form>
+
         <!-- Prediction Result Container -->
         {% if prediction %}
         <section class="result-container" id="prediction-result">
@@ -40,6 +71,11 @@
                 </div>
                 <div class="result-info">
                     <span class="result-title">Spam Detected</span>
+                    {% if confidence is not none %}
+                    <span class="confidence-badge">
+                        <i class="fa-solid fa-gauge-high"></i> Confidence: {{ confidence }}%
+                    </span>
+                    {% endif %}
                     <span class="result-desc">This message matches common patterns found in spam, phishing, or
                         unsolicited emails.</span>
                 </div>
@@ -51,6 +87,11 @@
                 </div>
                 <div class="result-info">
                     <span class="result-title">Legitimate Message</span>
+                    {% if confidence is not none %}
+                    <span class="confidence-badge">
+                        <i class="fa-solid fa-gauge-high"></i> Confidence: {{ confidence }}%
+                    </span>
+                    {% endif %}
                     <span class="result-desc">This message appears to be safe and clean. No spam signatures
                         detected.</span>
                 </div>
@@ -59,21 +100,23 @@
         </section>
         {% endif %}
 
-        <!-- Classifier Form -->
-        <form method="POST" class="classifier-form">
-            <div class="input-group">
-                <textarea name="message" class="text-area"
-                    placeholder="Paste the email content or message text here to analyze..."
-                    required>{{ request.form.get('message', '') }}</textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">
-                <span>Scan Message</span>
-                <i class="fa-solid fa-circle-arrow-right"></i>
-            </button>
-        </form>
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-dev">Developed by <span>Sandeep Kumar Sha</span></p>
+            <p class="footer-powered">Powered by Flask + Scikit-Learn</p>
+        </footer>
     </main>
 
+    <!-- Custom JavaScript -->
+    <script>
+        function fillExample(text) {
+            const textarea = document.querySelector('.text-area');
+            if (textarea) {
+                textarea.value = text;
+                textarea.focus();
+            }
+        }
+    </script>
 </body>
 
 </html>

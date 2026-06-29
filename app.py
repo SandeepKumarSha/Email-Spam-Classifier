@@ -44,6 +44,7 @@ def transform_text(text):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     prediction = None
+    confidence = None
 
     if request.method == 'POST':
         message = request.form['message']
@@ -54,7 +55,14 @@ def home():
 
         prediction = "Spam" if result == 1 else "Not Spam"
 
-    return render_template('index.html', prediction=prediction)
+        if hasattr(model, 'predict_proba'):
+            try:
+                proba = model.predict_proba(vector)[0]
+                confidence = round(proba[result] * 100, 1)
+            except Exception:
+                confidence = None
+
+    return render_template('index.html', prediction=prediction, confidence=confidence)
 
 
 if __name__ == '__main__':
