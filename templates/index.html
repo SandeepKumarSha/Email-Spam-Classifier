@@ -1,25 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Email Spam Classifier</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Classifier - AI Spam Detection</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-    <h1>Email Spam Classifier</h1>
+    <main class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="branding-icon">
+                <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h1 class="title">Spam Shield</h1>
+            <p class="subtitle">Analyze emails or messages instantly using our pre-trained machine learning model to
+                verify their legitimacy.</p>
+        </header>
 
-    <form method="POST">
-        <textarea name="message"
-                  rows="10"
-                  cols="50"
-                  placeholder="Enter your message"></textarea>
-        <br><br>
+        <!-- Prediction Result Container -->
+        {% if prediction %}
+        <section class="result-container" id="prediction-result">
+            {% if prediction == 'Spam' %}
+            <div class="result-card spam">
+                <div class="result-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="result-info">
+                    <span class="result-title">Spam Detected</span>
+                    <span class="result-desc">This message matches common patterns found in spam, phishing, or
+                        unsolicited emails.</span>
+                </div>
+            </div>
+            {% else %}
+            <div class="result-card not-spam">
+                <div class="result-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="result-info">
+                    <span class="result-title">Legitimate Message</span>
+                    <span class="result-desc">This message appears to be safe and clean. No spam signatures
+                        detected.</span>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        {% endif %}
 
-        <button type="submit">Predict</button>
-    </form>
+        <!-- Classifier Form -->
+        <form method="POST" class="classifier-form">
+            <div class="input-group">
+                <textarea name="message" class="text-area"
+                    placeholder="Paste the email content or message text here to analyze..."
+                    required>{{ request.form.get('message', '') }}</textarea>
+            </div>
 
-    {% if prediction %}
-        <h2>Result: {{ prediction }}</h2>
-    {% endif %}
+            <button type="submit" class="submit-btn">
+                <span>Scan Message</span>
+                <i class="fa-solid fa-circle-arrow-right"></i>
+            </button>
+        </form>
+    </main>
 
 </body>
+
 </html>
