@@ -377,9 +377,7 @@ body::after {
 .pill-text {
     font-size: 0.82rem;
     color: var(--text-primary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.45;
 }
 
 /* Footer Styles */
@@ -391,16 +389,6 @@ body::after {
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-.footer-dev {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-.footer-dev span {
-    color: #a855f7;
-    font-weight: 600;
 }
 
 .footer-powered {
