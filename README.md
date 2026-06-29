@@ -10,6 +10,8 @@ An NLP-powered web application that classifies emails or messages as **Spam** or
 
 🔗 **Live Application:** https://email-spam-classifier-gold.vercel.app
 
+---
+
 ## 🚀 Features
 ✅ Classifies messages as Spam or Not Spam
 
