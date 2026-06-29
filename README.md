@@ -11,14 +11,20 @@ An NLP-powered web application that classifies emails or messages as **Spam** or
 🔗 **Live Application:** https://email-spam-classifier-gold.vercel.app
 
 ## 🚀 Features
-
 ✅ Classifies messages as Spam or Not Spam
+
 ✅ Performs advanced text preprocessing and cleaning
+
 ✅ Uses TF-IDF Vectorization for feature extraction
+
 ✅ Employs Multinomial Naive Bayes for classification
+
 ✅ Interactive and responsive user interface
+
 ✅ Real-time message analysis
+
 ✅ Displays model evaluation metrics
+
 ✅ Deployed as a web application using Flask
 
 ---
@@ -71,11 +77,11 @@ Email-Spam-Classifier/
 
 ### Confusion Matrix
 
-![Confusion Matrix](static/images/confusion_matrix.png)
+![Confusion Matrix](static/confusion_matrix.png)
 
 ### Evaluation Metrics
 
-![Evaluation Scores](static/images/evaluation_score.png)
+![Evaluation Scores](static/evaluation_score.png)
 
 | Metric    | Score      |
 | --------- | ---------- |
